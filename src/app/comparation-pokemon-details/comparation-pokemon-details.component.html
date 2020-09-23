@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h4 *ngIf='secondPokemonSelected' class="modal-title pull-left"> {{firstPokemon.name}} vs.
+        {{secondPokemonSelected.name}}
+    </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="doHide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div *ngIf="firstPokemon" class="modal-body">
+    <div class="images">
+        <img class="first-pokemon-img" src={{img}}>
+        <img class="second-pokemon-image" src={{baseImgUrl+secondPokemon.id+extensionImgUrl}}>
+    </div>
+    <div class="pokemon-details">
+
+        <div class="first-pokemon">
+            <p>{{firstPokemon.height}}m</p>
+            <p>{{firstPokemon.weight}}kg</p>
+            <p>Female</p>
+            <ul>
+                <li *ngFor='let ability of firstPokemon.abilities'>
+                    {{ability.ability.name}}
+                </li>
+            </ul>
+        </div>
+        <div class="attributes">
+            <p><strong> Height</strong></p>
+            <p><strong> Weight</strong></p>
+            <p><strong> Gender</strong></p>
+            <p><strong> Abilities</strong></p>
+        </div>
+        <div *ngIf='secondPokemonSelected' class="second-pokemon">
+            <p>{{secondPokemonSelected.height}}m</p>
+            <p>{{secondPokemonSelected.weight}}kg</p>
+            <p>Female</p>
+            <ul>
+                <li *ngFor='let ability of secondPokemonSelected.abilities'>
+                    {{ability.ability.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="stats">
+        <h4>Stats</h4>
+        <hr>
+        <app-multiple-bar-chart [complete-stats]="comparationStats"></app-multiple-bar-chart>
+    </div>
+</div>

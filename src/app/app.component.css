@@ -1,0 +1,19 @@
+.page-content{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 100px 0;
+}
+
+.card
+{
+    width: 15%;
+    margin: 1%;
+}
+
+.button{
+    margin-bottom: 20px;
+    margin-top: -80px;
+    text-align: center;
+}

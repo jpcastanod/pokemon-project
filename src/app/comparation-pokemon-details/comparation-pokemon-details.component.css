@@ -1,0 +1,27 @@
+.pokemon-details{
+    display: flex;
+    justify-content: center;
+}
+
+.pokemon-details  > div{
+    width: 27%;
+    margin-left: 30px;
+}
+
+li{
+    list-style: none;
+    margin-left: -20px;
+}
+
+.images{
+    display: flex;
+    justify-content: space-between;
+}
+
+.images img{
+    width: 40%;
+}
+
+.stats{
+    text-align: center;
+}

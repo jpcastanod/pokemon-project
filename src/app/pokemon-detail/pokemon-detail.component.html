@@ -1,0 +1,65 @@
+<div class="modal-header">
+    <h4 *ngIf='pokemonSelected' class="modal-title pull-left"> {{pokemonSelected.name}}</h4>
+    <div class="content" role="main">
+        <div class="card">
+            <div class="form-group">
+                <input (click)='changeValue()' placeholder="Compare to" class="form-control" id="search-text"
+                    aria-describedby="search-text" [(ngModel)]="searchText" autofocus autocomplete="off">
+            </div>
+            <ul *ngIf="compare" class="list-group list-group-flush">
+                <li (click)="pokemonClicked($event)" class=" list-group-item"
+                    *ngFor="let pokemon of pokemonList | appFilter: searchText">
+                    {{pokemon}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button type="button" class="btn btn-info" aria-label="Close" (click)="openModal()">COMPARE
+    </button>
+
+    <button type="button" class="close pull-right" aria-label="Close" (click)="doHide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div *ngIf='pokemonSelected' (click)="changeValueFalse()" class="modal-body">
+    <div class="img">
+        <img src={{imgPokemon}}>
+    </div>
+    <div>
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet consequuntur deleniti quisquam minus
+            repellat,
+        </p>
+        <hr>
+        <div class="modal-info">
+            <div>
+                <p><strong> Height</strong></p>
+                <p>{{pokemonSelected.height}}m</p>
+            </div>
+            <div>
+                <p><strong> Weight</strong></p>
+                <p>{{pokemonSelected.weight}}kg</p>
+            </div>
+            <div>
+                <p><strong> Gender</strong></p>
+                <p>Female</p>
+            </div>
+
+            <ul>
+                <p><strong> Abilities</strong></p>
+                <li *ngFor='let ability of pokemonSelected.abilities'>
+                    {{ability.ability.name}}
+                </li>
+            </ul>
+            <ul>
+                <p><strong> Types</strong></p>
+                <li *ngFor='let type of pokemonSelected.types'>
+                    {{type.type.name}}
+                </li>
+            </ul>
+        </div>
+        <h4>Stats</h4>
+    </div>
+    <hr>
+    <app-bar-chart [stats]='stats'></app-bar-chart>
+</div>
